@@ -1,5 +1,8 @@
+var path = require('path');
+
 var dest = './build'; // 出力先ディレクトリ
 var src = './src';  // ソースディレクトリ
+var relativeSrcPath = path.relative('.', src);
 
 module.exports = {
     // 出力先の指定
@@ -30,5 +33,11 @@ module.exports = {
                 }
             ]
         }
+    },
+
+    watch: {
+        js: relativeSrcPath + '/js/**',
+        styl: relativeSrcPath + '/styl/**',
+        www: relativeSrcPath + '/www/index.html'
     }
 };
