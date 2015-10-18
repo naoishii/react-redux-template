@@ -1,15 +1,14 @@
-import react from 'react';
+import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import App from './containers/App';
+import configureStore from './store/configureStore';
 
-import Hello from './components/Hello';
-
-(function () {
-    const hello = new Hello('HELLO!');
-
-    console.log(hello.message);
-})();
+const store = configureStore();
 
 render(
-    react.createElement('h1', null, 'Hello, world!'),
-    document.getElementById('example')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
 );
